@@ -18,7 +18,7 @@ app.post('/', (req, res) => {
             "content-type": 'application/json'
         },
         body: JSON.stringify({
-            text: `Message from ${req.body.user_name} in #${req.body.channel_name}:\n\n${req.body.text}`
+            text: `Message from @${req.body.user_name} in #${req.body.channel_name}:\n\n> ${req.body.text}`
         })
     }).then(res => {
         if (res.statusCode >= 400) {
