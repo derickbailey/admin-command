@@ -12,10 +12,6 @@ if (!process.env.PORT || !process.env.INTEGRATION_TOKEN || !process.env.WEBHOOK_
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.post('/', (req, res) => {
-    if (req.body.token != process.env.INTEGRATION_TOKEN) {
-        return res.status(402).end("Bad token")
-    }
-
     fetch(process.env.WEBHOOK_URL, {
         method: 'POST', 
         headers: {
@@ -40,7 +36,6 @@ app.post('/', (req, res) => {
        console.warn(err)
        res.status(500).end("There was an error sending your request\n")
     })
-
 })
 
 app.listen(process.env.PORT, function () {
